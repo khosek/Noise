@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] KeyCode shoot;
     [SerializeField] Transform target;
-    [SerializeField] Camera playerCamera;
+    [SerializeField] Camera myCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +30,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(shoot)) Shoot();
     }
 
-    private void LateUpdate()
+    /*private void LateUpdate()
     {
-        playerCamera.transform.rotation = Quaternion.Euler(0,0,0);
-    }
+        myCamera.transform.rotation = Quaternion.Euler(0,0,0);
+    }*/
 
     void Shoot() 
     {
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     void moveTarget() 
     {
         var mousePos = Input.mousePosition;
-        mousePos = playerCamera.ScreenToWorldPoint(mousePos);
+        mousePos = myCamera.ScreenToWorldPoint(mousePos);
         mousePos.z = 0;
         target.transform.position = mousePos;
         this.transform.right = mousePos - transform.position;
