@@ -6,6 +6,9 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] KeyCode shoot;
+    [SerializeField] Transform target;
+    [SerializeField] Camera playerCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -20,5 +23,31 @@ public class Player : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         movement.y = Input.GetAxis("Vertical") * Time.deltaTime * speed;
         transform.Translate(movement);
+
+        moveTarget();
+        // target.SetPositionAndRotation(Input.mousePosition, Quaternion.identity);
+
+        if (Input.GetKeyDown(shoot)) Shoot();
+    }
+
+    private void LateUpdate()
+    {
+        playerCamera.transform.rotation = Quaternion.Euler(0,0,0);
+    }
+
+    void Shoot() 
+    {
+        Debug.Log("Shooting!");
+        // Vector is mouse position - player position
+        // transform.right = new Vector2(0, 1);
+    }
+
+    void moveTarget() 
+    {
+        var mousePos = Input.mousePosition;
+        mousePos = playerCamera.ScreenToWorldPoint(mousePos);
+        mousePos.z = 0;
+        target.transform.position = mousePos;
+        this.transform.right = mousePos - transform.position;
     }
 }
