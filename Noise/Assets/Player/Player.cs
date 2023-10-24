@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         Vector2 movement = Vector2.zero;
         movement.x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         movement.y = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        transform.Translate(movement);
+        transform.Translate(movement, Space.World);
 
         moveTarget();
         // target.SetPositionAndRotation(Input.mousePosition, Quaternion.identity);
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     void moveTarget() 
     {
         var mousePos = Input.mousePosition;
-        mousePos = myCamera.ScreenToWorldPoint(mousePos);
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = 0;
         target.transform.position = mousePos;
         this.transform.right = mousePos - transform.position;
