@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdbba9c9fdba0144a27a173818320d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 970901607}
 --- !u!1 &392656722
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +415,7 @@ MonoBehaviour:
   speed: 5
   shoot: 323
   target: {fileID: 1104442765}
-  playerCamera: {fileID: 182658392}
+  myCamera: {fileID: 182658394}
 --- !u!50 &970901609
 Rigidbody2D:
   serializedVersion: 4
