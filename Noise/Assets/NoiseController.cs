@@ -14,7 +14,7 @@ public class NoiseController : MonoBehaviour
 
     public UnityEvent Sound;
     [System.Serializable]
-    public class myIntEvent : UnityEvent<int> { }
+    public class myFloatEvent : UnityEvent<float> { }
 
     // Start is called before the first frame update
     void Start()
@@ -29,5 +29,10 @@ public class NoiseController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public float formatSound(int noiseChange, int maxNoise) 
+    {
+        return noiseChange + ((float)maxNoise) / 100.0f;
     }
 }
