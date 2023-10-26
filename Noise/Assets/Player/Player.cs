@@ -8,11 +8,14 @@ public class Player : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] KeyCode shoot;
     [SerializeField] Transform target;
-    [SerializeField] Camera myCamera;
+    
     [SerializeField] int shotVolume;
     [SerializeField] int shotMaxNoise;
+    
     [SerializeField] float maxXDistance;
     [SerializeField] float maxYDistance;
+
+    [SerializeField] GameObject bullet;
 
     // Start is called before the first frame update
     void Start()

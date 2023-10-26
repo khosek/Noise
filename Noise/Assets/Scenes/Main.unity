@@ -418,9 +418,9 @@ GameObject:
   - component: {fileID: 970901606}
   - component: {fileID: 970901608}
   - component: {fileID: 970901609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -508,11 +508,11 @@ MonoBehaviour:
   speed: 5
   shoot: 323
   target: {fileID: 1104442765}
-  myCamera: {fileID: 182658394}
   shotVolume: 30
   shotMaxNoise: 75
   maxXDistance: 10
   maxYDistance: 10
+  bullet: {fileID: 4921890113104892705, guid: a06685e72abc98b4e8e76cee278f8cb6, type: 3}
 --- !u!50 &970901609
 Rigidbody2D:
   serializedVersion: 4
@@ -523,7 +523,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 970901605}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -550,7 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1104442765}
   - component: {fileID: 1104442766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
