@@ -273,6 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c314c9f7bda42d24db680fa6cc2e2851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noiseDecayRate: 5
+  noise: 0
 --- !u!1 &392656722
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,8 +511,8 @@ MonoBehaviour:
   myCamera: {fileID: 182658394}
   shotVolume: 30
   shotMaxNoise: 75
-  maxXDistance: 3
-  maxYDistance: 3
+  maxXDistance: 10
+  maxYDistance: 10
 --- !u!50 &970901609
 Rigidbody2D:
   serializedVersion: 4
