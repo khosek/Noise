@@ -12,7 +12,7 @@ public class NoiseController : MonoBehaviour
         instance = this;
     }
 
-    public UnityEvent Sound;
+    public myFloatEvent Sound;
     [System.Serializable]
     public class myFloatEvent : UnityEvent<float> { }
 
@@ -21,7 +21,7 @@ public class NoiseController : MonoBehaviour
     {
         if (Sound == null)
         {
-            Sound = new UnityEvent();
+            Sound = new myFloatEvent();
         }
     }
 

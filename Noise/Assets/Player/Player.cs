@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] KeyCode shoot;
     [SerializeField] Transform target;
     [SerializeField] Camera myCamera;
+    [SerializeField] int shotVolume;
+    [SerializeField] int shotMaxNoise;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
         Debug.Log("Shooting!");
         // Vector is mouse position - player position
         // transform.right = new Vector2(0, 1);
+        NoiseController.instance.Sound.Invoke(NoiseController.instance.formatSound(shotVolume, shotMaxNoise));
     }
 
     void moveTarget() 
