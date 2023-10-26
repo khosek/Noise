@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] Camera myCamera;
     [SerializeField] int shotVolume;
     [SerializeField] int shotMaxNoise;
+    [SerializeField] float maxXDistance;
+    [SerializeField] float maxYDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -26,16 +28,24 @@ public class Player : MonoBehaviour
         movement.y = Input.GetAxis("Vertical") * Time.deltaTime * speed;
         transform.Translate(movement, Space.World);
 
-        moveTarget();
+        // Making sure the player doesn't move beyond the world bounds
+        if (transform.position.x > maxXDistance) { transform.Translate(new Vector2(-movement.x, 0), Space.World); }
+        if (transform.position.x < -maxXDistance) { transform.Translate(new Vector2(-movement.x, 0), Space.World); }
+        if (transform.position.y > maxYDistance) { transform.Translate(new Vector2(0, -movement.y), Space.World); }
+        if (transform.position.y < -maxYDistance) { transform.Translate(new Vector2(0, -movement.y), Space.World); }
+
+        
         // target.SetPositionAndRotation(Input.mousePosition, Quaternion.identity);
+
+        
+    }
+
+    private void LateUpdate()
+    {
+        moveTarget();
 
         if (Input.GetKeyDown(shoot)) Shoot();
     }
-
-    /*private void LateUpdate()
-    {
-        myCamera.transform.rotation = Quaternion.Euler(0,0,0);
-    }*/
 
     void Shoot() 
     {
