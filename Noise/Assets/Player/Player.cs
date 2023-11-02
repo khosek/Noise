@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
@@ -8,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] KeyCode shoot;
     [SerializeField] Transform target;
+    SpriteRenderer sprite;
     
     [SerializeField] int shotVolume;
     [SerializeField] int shotMaxNoise;
@@ -22,12 +25,22 @@ public class Player : MonoBehaviour
     // i-variables refer to invincibility
     float iTimer;
     [SerializeField] float maxITime;
+    IEnumerator iFrameBlink()
+    {
+        for (float timer = 0; timer < maxITime; timer += 0.25f)
+        {
+            sprite.enabled = !sprite.enabled;
+            yield return new WaitForSeconds(0.25f);
+        }
+        sprite.enabled = true;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         health = 5;
         iTimer = 0;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -52,7 +65,7 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        moveTarget();
+        MoveTarget();
 
         if (Input.GetKeyDown(shoot)) Shoot();
     }
@@ -73,7 +86,7 @@ public class Player : MonoBehaviour
         newBullet.GetComponent<Rigidbody2D>().AddForce(bulletForce, ForceMode2D.Impulse);
     }
 
-    void moveTarget() 
+    void MoveTarget() 
     {
         var mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -82,13 +95,15 @@ public class Player : MonoBehaviour
         this.transform.right = mousePos - transform.position;
     }
 
-    public void damage()
+    public void Damage()
     {
         if (iTimer <= 0)
         {
             iTimer = maxITime;
+            StartCoroutine("iFrameBlink");
             health--;
             Debug.Log("Health: " + health);
+
             if (health <= 0) { 
                 GameObject.Destroy(gameObject);
             }

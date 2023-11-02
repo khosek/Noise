@@ -5,20 +5,21 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Zombies : MonoBehaviour
+public class Zombie : MonoBehaviour
 {
     GameObject player;
     Rigidbody2D rb;
     Vector3 moveDirection;
-
     [SerializeField] float acceleration;
-    
-    
+
+    int health;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = this.GetComponent<Rigidbody2D>();
+        health = 3;
     }
     
     // Update is called once per frame
@@ -43,7 +44,12 @@ public class Zombies : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player")) {
-            collision.collider.gameObject.GetComponent<Player>().damage();
+            collision.collider.gameObject.GetComponent<Player>().Damage();
         }
+    }
+
+    public void Damage() {
+        health--;
+        if (health <= 0) { GameObject.Destroy(this.gameObject); }
     }
 }
