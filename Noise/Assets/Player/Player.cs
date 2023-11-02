@@ -18,10 +18,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameObject bullet;
 
+    int health;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = 5;
     }
 
     // Update is called once per frame
@@ -74,5 +76,11 @@ public class Player : MonoBehaviour
         mousePos.z = 0;
         target.transform.position = mousePos;
         this.transform.right = mousePos - transform.position;
+    }
+
+    public void damage()
+    {
+        health--;
+        Debug.Log("Health: " + health);
     }
 }

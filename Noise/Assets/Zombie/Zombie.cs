@@ -36,4 +36,11 @@ public class Zombies : MonoBehaviour
     {
         rb.AddForce(moveDirection * acceleration);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player")) {
+            collision.collider.gameObject.GetComponent<Player>().damage();
+        }
+    }
 }
