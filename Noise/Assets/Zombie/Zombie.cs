@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,6 +27,9 @@ public class Zombies : MonoBehaviour
         moveDirection = player.transform.position - transform.position;
         moveDirection.Set(moveDirection.x, moveDirection.y, 0);
         moveDirection.Normalize();
+
+        // Turn to face the player
+        this.transform.right = player.transform.position - transform.position;
     }
 
     private void FixedUpdate()
