@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Zombies : MonoBehaviour
 {
     GameObject player;
     Rigidbody2D rb;
+    Vector3 moveDirection;
 
     [SerializeField] float acceleration;
     
@@ -21,9 +23,13 @@ public class Zombies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 moveDirection = player.transform.position - transform.position;
+        moveDirection = player.transform.position - transform.position;
         moveDirection.Set(moveDirection.x, moveDirection.y, 0);
         moveDirection.Normalize();
-        rb.AddForce(moveDirection * (acceleration * Time.deltaTime));
+    }
+
+    private void FixedUpdate()
+    {
+        rb.AddForce(moveDirection * acceleration);
     }
 }
