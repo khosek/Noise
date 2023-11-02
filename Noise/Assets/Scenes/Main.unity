@@ -515,6 +515,7 @@ MonoBehaviour:
   maxXDistance: 10
   maxYDistance: 10
   bullet: {fileID: 4921890113104892705, guid: a06685e72abc98b4e8e76cee278f8cb6, type: 3}
+  maxITime: 3
 --- !u!50 &970901609
 Rigidbody2D:
   serializedVersion: 4

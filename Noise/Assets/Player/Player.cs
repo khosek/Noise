@@ -19,11 +19,15 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject bullet;
 
     int health;
+    // i-variables refer to invincibility
+    float iTimer;
+    [SerializeField] float maxITime;
 
     // Start is called before the first frame update
     void Start()
     {
         health = 5;
+        iTimer = 0;
     }
 
     // Update is called once per frame
@@ -43,7 +47,7 @@ public class Player : MonoBehaviour
         
         // target.SetPositionAndRotation(Input.mousePosition, Quaternion.identity);
 
-        
+        iTimer -= Time.deltaTime;
     }
 
     private void LateUpdate()
@@ -80,7 +84,14 @@ public class Player : MonoBehaviour
 
     public void damage()
     {
-        health--;
-        Debug.Log("Health: " + health);
+        if (iTimer <= 0)
+        {
+            iTimer = maxITime;
+            health--;
+            Debug.Log("Health: " + health);
+            if (health <= 0) { 
+                GameObject.Destroy(gameObject);
+            }
+        }
     }
 }

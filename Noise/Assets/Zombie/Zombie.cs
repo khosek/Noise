@@ -24,12 +24,15 @@ public class Zombies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveDirection = player.transform.position - transform.position;
-        moveDirection.Set(moveDirection.x, moveDirection.y, 0);
-        moveDirection.Normalize();
+        if (player != null)
+        {
+            moveDirection = player.transform.position - transform.position;
+            moveDirection.Set(moveDirection.x, moveDirection.y, 0);
+            moveDirection.Normalize();
 
-        // Turn to face the player
-        this.transform.right = player.transform.position - transform.position;
+            // Turn to face the player
+            this.transform.right = player.transform.position - transform.position;
+        }
     }
 
     private void FixedUpdate()
