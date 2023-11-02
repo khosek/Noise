@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     
     [SerializeField] int shotVolume;
     [SerializeField] int shotMaxNoise;
+    [SerializeField] float shotForce;
     
     [SerializeField] float maxXDistance;
     [SerializeField] float maxYDistance;
@@ -56,6 +57,14 @@ public class Player : MonoBehaviour
         // Vector is mouse position - player position
         // transform.right = new Vector2(0, 1);
         NoiseController.instance.Sound.Invoke(NoiseController.instance.formatSound(shotVolume, shotMaxNoise));
+
+        // Shooting the bullet
+        Vector3 bulletForce = target.transform.position - transform.position;
+        bulletForce.Set(bulletForce.x, bulletForce.y, 0);
+        bulletForce = bulletForce.normalized * shotForce;
+        GameObject newBullet = Object.Instantiate(bullet);
+        newBullet.transform.position = transform.position;
+        newBullet.GetComponent<Rigidbody>().AddForce(bulletForce, ForceMode.Impulse);
     }
 
     void moveTarget() 
