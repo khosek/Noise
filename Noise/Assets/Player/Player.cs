@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
         bulletForce = bulletForce.normalized * shotForce;
         GameObject newBullet = Object.Instantiate(bullet);
         newBullet.transform.position = transform.position;
-        newBullet.GetComponent<Rigidbody>().AddForce(bulletForce, ForceMode.Impulse);
+        newBullet.GetComponent<Rigidbody2D>().AddForce(bulletForce, ForceMode2D.Impulse);
     }
 
     void moveTarget() 

@@ -510,6 +510,7 @@ MonoBehaviour:
   target: {fileID: 1104442765}
   shotVolume: 30
   shotMaxNoise: 75
+  shotForce: 10
   maxXDistance: 10
   maxYDistance: 10
   bullet: {fileID: 4921890113104892705, guid: a06685e72abc98b4e8e76cee278f8cb6, type: 3}
