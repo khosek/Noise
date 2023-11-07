@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameObject bullet;
 
+    [SerializeField] GameObject resetMenu;
+
     int health;
     // i-variables refer to invincibility
     float iTimer;
@@ -108,5 +110,11 @@ public class Player : MonoBehaviour
                 GameObject.Destroy(gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        resetMenu.SetActive(true);
+
     }
 }
