@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
         health = 5;
         iTimer = 0;
         sprite = GetComponent<SpriteRenderer>();
+        // UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        // UnityEngine.Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -115,6 +117,6 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         resetMenu.SetActive(true);
-
+        // UnityEngine.Cursor.visible = true;
     }
 }
