@@ -185,7 +185,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   speed: 5
   shoot: 323
   target: {fileID: 1104442765}
-  shotVolume: 30
+  shotVolume: 10
   shotMaxNoise: 75
   shotForce: 10
   maxXDistance: 10
