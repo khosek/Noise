@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float noise;
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] GameObject enemy;
+
+    [SerializeField] TextMeshProUGUI noiseText;
 
     IEnumerator SpawnZombie() {
         while (true)
@@ -34,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         if (noise > 0) { noise -= noiseDecayRate * Time.deltaTime; }
+        noiseText.text = "Noise: " + (int) noise;
     }
 
     void changeNoise(float sound) 

@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject bullet;
 
     [SerializeField] GameObject resetMenu;
+    [SerializeField] GameObject gameUI;
 
     int health;
     // i-variables refer to invincibility
@@ -116,6 +117,7 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
+        gameUI.SetActive(false);
         resetMenu.SetActive(true);
         // UnityEngine.Cursor.visible = true;
     }
