@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Enemy")) {
             collision.collider.gameObject.GetComponent<Zombie>().Damage();
-            GameObject.Destroy(this.gameObject);
         }
+        GameObject.Destroy(this.gameObject);
     }
 }
