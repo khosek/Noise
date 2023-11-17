@@ -62,6 +62,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         if (noise > 0) { noise -= noiseDecayRate * Time.deltaTime; }
+        if (noise < 0) { noise = 0; }
         noiseText.text = "Noise: " + (int) noise;
 
         /*songLevel1.volume = 1.0f - (noise / 25.0f);
@@ -86,7 +87,7 @@ public class EnemySpawner : MonoBehaviour
     void changeNoise(float sound) 
     {
         Debug.Log("Sound receieved: " + sound);
-        int maxNoise = (int) (sound * 100.0f) % 100;
+        int maxNoise = (int) (sound * 1000.0f) % 1000;
         int noiseChange = (int) sound;
         if(noise < maxNoise - noiseChange) { noise += noiseChange; }
         else if (noise < maxNoise) { noise = maxNoise; }

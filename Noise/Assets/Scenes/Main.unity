@@ -1582,8 +1582,8 @@ MonoBehaviour:
   speed: 5
   shoot: 323
   target: {fileID: 1104442765}
-  shotVolume: 10
-  shotMaxNoise: 75
+  shotVolume: 5
+  shotMaxNoise: 100
   shotForce: 10
   maxXDistance: 10
   maxYDistance: 10

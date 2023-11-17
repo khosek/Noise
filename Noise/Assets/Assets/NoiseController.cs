@@ -33,6 +33,6 @@ public class NoiseController : MonoBehaviour
 
     public float formatSound(int noiseChange, int maxNoise) 
     {
-        return noiseChange + ((float)maxNoise) / 100.0f;
+        return noiseChange + ((float)maxNoise) / 1000.0f;
     }
 }
